@@ -39,6 +39,18 @@ func HandleArgs(argsLst []string) error {
 
 		return retrieveData(argsLst[1])
 
+	case "free":
+		fmt.Println("Calling free")
+		if lenArgs > 3 || lenArgs < 2 {
+			return errorHandling.IncorrectNumArgsForRetrieveErr
+		}
+
+		if lenArgs == 3 {
+			globalVars.DbFilePath = argsLst[2]
+		}
+
+		return freeData(argsLst[1])
+
 	case "defragment":
 		fmt.Println("Calling defragment")
 		if lenArgs > 2 {
