@@ -45,5 +45,23 @@ $ ./gofmt
 
 ## File Format
 ```
+<HEADER_checksum><HEADER_NumberOfKeys><HEADER_KeyStringSize><HEADER_KeyAddressSize><KEY_1_KeyBytes><KEY_1_ByteAddressOfVal><KEY_2_KeyBytes><KEY_2_ByteAddressOfVal>...
+<EMPTY_SPACE?>...
+...<VAL_2_checksum><VAL_2_ValSize><VAL_2_data><VAL_1_checksum><VAL_1_ValSize><VAL_1_data>
+```
 
+Example:
+```
+# Keys will be int32
+
+# Values will be strings
+# Golang encodes each character with UTF-8
+# Golang represents all characters in int32 so 4 bytes?
+
+# Addresses will be the index of the starting byte in a Byte array of the file
+# So Addresses will be int64
+
+<aaa...aaa><2_keys><4_bytes><8_bytes><1_key><200_startByteIndex><2_key><400_startByteIndex>
+<>
+<bbb...bbb><>
 ```
